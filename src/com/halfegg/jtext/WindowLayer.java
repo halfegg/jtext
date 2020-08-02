@@ -1,6 +1,7 @@
 package com.halfegg.jtext;
 
 import com.halfegg.jtext.io.Config;
+import com.halfegg.jtext.io.ExceptionLogger;
 import com.halfegg.jtext.io.FileIO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import java.io.IOException;
 
 public class WindowLayer {
 
+    private final ExceptionLogger logger = new ExceptionLogger();
     private final Config config = new Config();
 
     public Parent getRoot() {
@@ -20,7 +22,7 @@ public class WindowLayer {
             config.createFiles();
             return FXMLLoader.load(getClass().getResource("resources/main-app.fxml"));
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.log(this.getClass().getName(),"getRoot()", ex);
             return null;
         }
     }
@@ -72,7 +74,7 @@ public class WindowLayer {
             stage.setX(sceneWindow.getX() + sceneWindow.getWidth() / 2 - stage.getWidth() / 2);
             stage.setY(sceneWindow.getY() + sceneWindow.getHeight() / 2 - stage.getHeight() / 2);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.log(this.getClass().getName(),"getFindReplaceWindow(Window)", ex);
         }
     }
 
@@ -91,7 +93,7 @@ public class WindowLayer {
             stage.setX(sceneWindow.getX() + sceneWindow.getWidth() / 2 - stage.getWidth() / 2);
             stage.setY(sceneWindow.getY() + sceneWindow.getHeight() / 2 - stage.getHeight() / 2);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.log(this.getClass().getName(),"getFontSettingWindow(Window)", ex);
         }
     }
 

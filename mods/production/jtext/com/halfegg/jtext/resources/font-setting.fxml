@@ -11,58 +11,44 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="380.0" spacing="8.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.halfegg.jtext.FontSettingController">
-   <children>
-      <HBox alignment="CENTER" spacing="8.0" VBox.vgrow="ALWAYS">
-         <children>
-            <VBox spacing="2.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Family" />
-                  <ListView fx:id="fontFamilyListView" VBox.vgrow="ALWAYS" />
-               </children>
-            </VBox>
-            <VBox layoutX="10.0" layoutY="10.0" spacing="2.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Style" />
-                  <ListView fx:id="fontStyleListView" prefWidth="180.0" />
-               </children>
-            </VBox>
-            <VBox layoutX="110.0" layoutY="10.0" spacing="2.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Size" />
-                  <ListView fx:id="fontSizeListView" prefWidth="150.0" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <VBox spacing="2.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label text="Preview" />
-            <ScrollPane fitToWidth="true" prefHeight="240.0" VBox.vgrow="ALWAYS">
-               <content>
-                  <TextFlow nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER">
-                     <children>
-                        <Text fx:id="previewText" strokeType="OUTSIDE" strokeWidth="0.0" text="The big brown fox jumped over the lazy dog." textAlignment="CENTER">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Text>
-                     </children>
-                     <padding>
-                        <Insets top="8.0" />
-                     </padding>
-                  </TextFlow>
-               </content>
-            </ScrollPane>
-         </children>
-      </VBox>
-      <HBox alignment="CENTER_RIGHT" spacing="8.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Button mnemonicParsing="false" onAction="#previewAction" prefWidth="71.0" text="Preview" />
-            <Button mnemonicParsing="false" onAction="#applyAction" prefWidth="71.0" text="Apply" />
-         </children>
-      </HBox>
-   </children>
+<VBox fx:id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="380.0" spacing="8.0" xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.halfegg.jtext.FontSettingController">
    <padding>
-      <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+      <Insets bottom="14.0" left="14.0" right="14.0" top="14.0"/>
    </padding>
+   <HBox alignment="CENTER" spacing="8.0" VBox.vgrow="ALWAYS">
+      <VBox spacing="2.0" HBox.hgrow="ALWAYS">
+         <Label text="Family"/>
+         <ListView fx:id="fontFamilyListView" VBox.vgrow="ALWAYS"/>
+      </VBox>
+      <VBox layoutX="10.0" layoutY="10.0" spacing="2.0" HBox.hgrow="ALWAYS">
+         <Label text="Style"/>
+         <ListView fx:id="fontStyleListView" prefWidth="180.0"/>
+      </VBox>
+      <VBox layoutX="110.0" layoutY="10.0" spacing="2.0" HBox.hgrow="ALWAYS">
+         <Label text="Size"/>
+         <ListView fx:id="fontSizeListView" prefWidth="150.0"/>
+      </VBox>
+   </HBox>
+   <VBox spacing="2.0" VBox.vgrow="ALWAYS">
+      <Label text="Preview"/>
+      <ScrollPane fitToWidth="true" prefHeight="240.0" VBox.vgrow="ALWAYS">
+         <TextFlow nodeOrientation="LEFT_TO_RIGHT" textAlignment="CENTER">
+            <padding>
+               <Insets top="8.0"/>
+            </padding>
+            <Text fx:id="previewText" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="The big brown fox jumped over the lazy dog." textAlignment="CENTER">
+               <font>
+                  <Font size="14.0"/>
+               </font>
+            </Text>
+         </TextFlow>
+      </ScrollPane>
+   </VBox>
+   <HBox alignment="CENTER_RIGHT" spacing="8.0" VBox.vgrow="ALWAYS">
+      <Button mnemonicParsing="false" onAction="#previewAction" prefWidth="71.0" text="Preview"/>
+      <Button mnemonicParsing="false" onAction="#applyAction" prefWidth="71.0" text="Apply"/>
+   </HBox>
 </VBox>

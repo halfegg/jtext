@@ -2,7 +2,11 @@ package com.halfegg.jtext.io;
 
 import java.io.*;
 
-public final class FileIO {
+public class FileIO {
+
+    private static final com.halfegg.jtext.io.ExceptionLogger logger = new com.halfegg.jtext.io.ExceptionLogger();
+
+    private FileIO() {}
 
     public static String read(File file) {
         try (var reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
@@ -13,7 +17,7 @@ public final class FileIO {
             }
             return stringBuilder.toString();
         } catch (NullPointerException | IOException ex) {
-            ex.printStackTrace();
+            logger.log(FileIO.class.getName(), "read(File)", ex);
             return null;
         }
     }
@@ -22,7 +26,7 @@ public final class FileIO {
         try (var writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)))) {
             writer.write(content);
         } catch (NullPointerException | IOException ex) {
-            ex.printStackTrace();
+            logger.log(FileIO.class.getName(), "write(File, String)", ex);
         }
     }
 }

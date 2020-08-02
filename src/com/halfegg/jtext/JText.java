@@ -18,14 +18,15 @@ public class JText extends Application {
         stage.setScene(scene);
         stage.setTitle("jtext");
         stage.show();
-        
-        var configs =config.getPositionSizeConfig();
+
+        var configs = config.getPositionSizeConfig();
         stage.setX(configs[0]);
         stage.setY(configs[1]);
         stage.setWidth(configs[2]);
         stage.setHeight(configs[3]);
 
-        stage.setOnCloseRequest(e -> config.setPositionSizeConfig(stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight()));
+        stage.setOnCloseRequest(e -> config.setPositionSizeConfig(
+                stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight()));
     }
 
     @Override

@@ -8,6 +8,8 @@ import java.util.Properties;
 
 public class Config {
 
+    private final ExceptionLogger logger = new ExceptionLogger();
+
     private final Path CONFIG_DIRECTORY_PATH = Paths.get("config");
     private final Path PROPERTIES_DIRECTORY_PATH = Paths.get("config", "properties");
     private final Path FONT_CONFIG_PATH = Paths.get("config", "properties", "font.properties");
@@ -24,35 +26,25 @@ public class Config {
             if (Files.notExists(FONT_CONFIG_PATH)) {
                 Files.createFile(FONT_CONFIG_PATH);
                 setFontConfig("System", "Regular", "14");
-            } else {
-                //if exists but no content or incomplete
             }
             if (Files.notExists(THEME_CONFIG_PATH)) {
                 Files.createFile(THEME_CONFIG_PATH);
                 //
-            } else {
-                //if exists but no content or incomplete
             }
             if (Files.notExists(POSITION_CONFIG_PATH)) {
                 Files.createFile(POSITION_CONFIG_PATH);
                 setPositionSizeConfig(589.0,  182.0, 680.0, 520.0);
-            } else {
-                //if exists but no content or incomplete
             }
             if (Files.notExists(WRAP_TEXT_CONFIG_PATH)) {
                 Files.createFile(WRAP_TEXT_CONFIG_PATH);
                 setWrapTextConfig(true);
-            } else {
-                //if exists but no content or incomplete
             }
             if (Files.notExists(SHOW_FILE_CONFIG_PATH)) {
                 Files.createFile(SHOW_FILE_CONFIG_PATH);
                 setShowFileOnStartConfig(false, "");
-            } else {
-                //if exists but no content or incomplete
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.log(this.getClass().getName(), "createFiles()", ex);
         }
     }
 
@@ -64,7 +56,7 @@ public class Config {
         try {
             properties.store(Files.newOutputStream(FONT_CONFIG_PATH), CONFIG_MESSAGE);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.log(this.getClass().getName(), "setFontConfig(String, String, String)", ex);
         }
     }
 
@@ -73,8 +65,8 @@ public class Config {
         var properties = new Properties();
         try {
             properties.load(Files.newInputStream(FONT_CONFIG_PATH));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            logger.log(this.getClass().getName(), "getFontConfig()", ex);
         }
         configs[0] = properties.getProperty("fontFamily");
         configs[1] = properties.getProperty("fontStyle");
@@ -91,7 +83,7 @@ public class Config {
         try {
             properties.store(Files.newOutputStream(POSITION_CONFIG_PATH), CONFIG_MESSAGE);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.log(this.getClass().getName(), "setPositionSizeConfig(double, double, double, double)", ex);
         }
     }
 
@@ -100,8 +92,8 @@ public class Config {
         var properties = new Properties();
         try {
             properties.load(Files.newInputStream(POSITION_CONFIG_PATH));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            logger.log(this.getClass().getName(), "getPositionSizeConfig()", ex);
         }
         configs[0] = Double.parseDouble(properties.getProperty("x"));
         configs[1] = Double.parseDouble(properties.getProperty("y"));
@@ -115,8 +107,8 @@ public class Config {
         properties.setProperty("isWrapText", String.valueOf(isWrapText));
         try {
             properties.store(Files.newOutputStream(WRAP_TEXT_CONFIG_PATH), CONFIG_MESSAGE);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            logger.log(this.getClass().getName(), "setWrapTextConfig(boolean)", ex);
         }
     }
 
@@ -124,8 +116,8 @@ public class Config {
         var properties = new Properties();
         try {
             properties.load(Files.newInputStream(WRAP_TEXT_CONFIG_PATH));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            logger.log(this.getClass().getName(), "getWrapTextConfig()", ex);
         }
         return properties.getProperty("isWrapText");
     }
@@ -136,8 +128,8 @@ public class Config {
         properties.setProperty("file", filePath);
         try {
             properties.store(Files.newOutputStream(SHOW_FILE_CONFIG_PATH), CONFIG_MESSAGE);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            logger.log(this.getClass().getName(), "setShowFileOnStartConfig(boolean, String)", ex);
         }
     }
 
@@ -146,8 +138,8 @@ public class Config {
         var properties = new Properties();
         try {
             properties.load(Files.newInputStream(SHOW_FILE_CONFIG_PATH));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            logger.log(this.getClass().getName(), "getShowFileOnStartConfig()", ex);
         }
         configs[0] = properties.getProperty("showFileOnStart");
         configs[1] = properties.getProperty("file");

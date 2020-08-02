@@ -42,6 +42,7 @@ public class FontSettingController {
         config.setFontConfig(fontFamilyListView.getSelectionModel().getSelectedItem(),
                 fontStyleListView.getSelectionModel().getSelectedItem(),
                 fontSizeListView.getSelectionModel().getSelectedItem());
+        getOwner().requestFocus();
         ((Stage) root.getScene().getWindow()).close();
     }
 
@@ -84,5 +85,10 @@ public class FontSettingController {
         var parent = (VBox) owner.getScene().getRoot();
         var anchorPane = (AnchorPane) parent.getChildren().get(1);
         return (TextArea) anchorPane.getChildren().get(0);
+    }
+
+    private Stage getOwner() {
+        var stage = (Stage) root.getScene().getWindow();
+        return (Stage) stage.getOwner();
     }
 }
