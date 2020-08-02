@@ -17,53 +17,52 @@
       fx:controller="com.halfegg.jtext.MainAppController">
     <MenuBar>
         <Menu text="_File">
-            <MenuItem mnemonicParsing="false" onAction="#newFile" text="New"/>
-            <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open"/>
-            <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save"/>
-            <MenuItem mnemonicParsing="false" onAction="#saveAsFile" text="Save As"/>
-            <SeparatorMenuItem mnemonicParsing="false"/>
-            <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close"/>
+            <MenuItem mnemonicParsing="false" onAction="#newFile" text="New" />
+            <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
+            <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save" />
+            <MenuItem mnemonicParsing="false" onAction="#saveAsFile" text="Save As" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
         </Menu>
         <Menu text="_Edit">
-            <MenuItem mnemonicParsing="false" onAction="#copyText" text="Copy"/>
-            <MenuItem mnemonicParsing="false" onAction="#pasteText" text="Paste"/>
-            <MenuItem mnemonicParsing="false" onAction="#cutText" text="Cut"/>
-            <MenuItem mnemonicParsing="false" onAction="#deleteText" text="Delete"/>
-            <MenuItem mnemonicParsing="false" onAction="#selectAll" text="Select All"/>
-            <SeparatorMenuItem mnemonicParsing="false"/>
-            <MenuItem mnemonicParsing="false" onAction="#findReplaceText" text="Find / Replace"/>
-            <MenuItem mnemonicParsing="false" onAction="#insertDateTime" text="Insert Date / Time"/>
+            <MenuItem mnemonicParsing="false" onAction="#copyText" text="Copy" />
+            <MenuItem mnemonicParsing="false" onAction="#pasteText" text="Paste" />
+            <MenuItem mnemonicParsing="false" onAction="#cutText" text="Cut" />
+            <MenuItem mnemonicParsing="false" onAction="#deleteText" text="Delete" />
+            <MenuItem mnemonicParsing="false" onAction="#selectAll" text="Select All" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#findReplaceText" text="Find / Replace" />
+            <MenuItem mnemonicParsing="false" onAction="#insertDateTime" text="Insert Date / Time" />
         </Menu>
         <Menu text="F_ormat">
-            <MenuItem mnemonicParsing="false" onAction="#editFont" text="Font"/>
-            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Theme"/>
+            <MenuItem mnemonicParsing="false" onAction="#editFont" text="Font" />
+            <MenuItem mnemonicParsing="false" onAction="#changeTheme" text="Theme" />
+            <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#wrapText" text="Wrap Text">
                 <graphic>
-                    <CheckBox fx:id="wrapTextCheckBox" mnemonicParsing="false" selected="true" wrapText="true"/>
+                    <CheckBox fx:id="wrapTextCheckBox" mnemonicParsing="false" selected="true" wrapText="true" />
                 </graphic>
             </MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#showFileOnStart" text="Show File On Start">
                 <graphic>
-                    <CheckBox fx:id="showFileOnStartCheckBox" mnemonicParsing="false" wrapText="true"/>
+                    <CheckBox fx:id="showFileOnStartCheckBox" mnemonicParsing="false" wrapText="true" />
                 </graphic>
             </MenuItem>
         </Menu>
         <Menu text="_Help">
-            <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
-            <MenuItem mnemonicParsing="false" onAction="#help" text="Help"/>
+            <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+            <MenuItem mnemonicParsing="false" onAction="#help" text="Help" />
         </Menu>
     </MenuBar>
     <AnchorPane styleClass="main-body-container" VBox.vgrow="ALWAYS">
-        <TextArea fx:id="textArea" wrapText="true" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="0.0"
-                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <TextArea fx:id="textArea" wrapText="true" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </TextArea>
-        <Label fx:id="fileLabel" prefHeight="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-               AnchorPane.rightAnchor="0.0">
+        <Label fx:id="fileLabel" prefHeight="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <padding>
-                <Insets left="14.0"/>
+                <Insets left="14.0" />
             </padding>
         </Label>
     </AnchorPane>

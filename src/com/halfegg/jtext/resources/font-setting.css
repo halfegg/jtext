@@ -2,18 +2,24 @@
 
 }
 
+.label, .button {
+    -fx-font-size: 13;
+}
+
 // SCROLLBAR
-.scroll-bar:horizontal {
+.list-view > .virtual-flow > .scroll-bar:horizontal {
     -fx-pref-height: 16;
     -fx-padding: 2;
 }
 
-.scroll-bar:vertical {
+.list-view > .virtual-flow > .scroll-bar:vertical {
     -fx-pref-width: 16;
     -fx-padding: 2;
 }
 
-.scroll-bar, .scroll-bar:pressed, .scroll-bar:focused {
+.list-view > .virtual-flow > .scroll-bar,
+.list-view > .virtual-flow > .scroll-bar:pressed,
+.list-view > .virtual-flow > .scroll-bar:focused {
     -fx-font-size: 15;
     -fx-background-color: transparent;
 }

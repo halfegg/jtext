@@ -2,6 +2,23 @@
 
 }
 
+//MENU
+.menu-bar > .container > .menu-button > .label {
+    -fx-font-size: 13;
+}
+
+.context-menu {
+    -fx-padding: 2 0 2 0;
+}
+
+.context-menu .separator:horizontal .line {
+
+}
+
+.menu-item > .label {
+    -fx-font-size: 13;
+}
+
 //MAIN_BODY
 .main-body-container > .text-area {
     -fx-focus-color: transparent;

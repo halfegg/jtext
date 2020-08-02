@@ -1,0 +1,7 @@
+.root {
+
+}
+
+.text-field, .button {
+    -fx-font-size: 13;
+}
