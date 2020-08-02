@@ -1,0 +1,39 @@
+.root {
+
+}
+
+//MAIN_BODY
+.main-body-container > .text-area {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.main-body-container > .text-area > .content {
+    -fx-padding: 0;
+}
+
+.main-body-container > .text-area:focused > .content {
+    -fx-background-insets: 0;
+}
+
+.main-body-container > .text-area > .scroll-pane > .scroll-bar:horizontal {
+    -fx-pref-height: 16;
+    -fx-padding: 2;
+}
+
+.main-body-container > .text-area > .scroll-pane > .scroll-bar:vertical {
+    -fx-pref-width: 16;
+    -fx-padding: 2;
+}
+
+.main-body-container > .text-area > .scroll-pane > .scroll-bar,
+.main-body-container > .text-area > .scroll-pane >.scroll-bar:pressed,
+.main-body-container > .text-area > .scroll-pane >.scroll-bar:focused {
+    -fx-font-size: 15;
+    -fx-background-color: transparent;
+}
+
+.main-body-container > .label {
+    -fx-font-size: 11;
+    -fx-font-style: italic;
+}

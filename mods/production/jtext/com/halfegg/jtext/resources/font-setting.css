@@ -1,0 +1,19 @@
+.root {
+
+}
+
+// SCROLLBAR
+.scroll-bar:horizontal {
+    -fx-pref-height: 16;
+    -fx-padding: 2;
+}
+
+.scroll-bar:vertical {
+    -fx-pref-width: 16;
+    -fx-padding: 2;
+}
+
+.scroll-bar, .scroll-bar:pressed, .scroll-bar:focused {
+    -fx-font-size: 15;
+    -fx-background-color: transparent;
+}
