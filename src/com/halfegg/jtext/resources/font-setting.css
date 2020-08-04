@@ -1,3 +1,6 @@
+/*
+ *  Author: halfegg
+ */
 .root {
 
 }
@@ -6,7 +9,7 @@
     -fx-font-size: 13;
 }
 
-// SCROLLBAR
+/* SCROLLBAR */
 .list-view > .virtual-flow > .scroll-bar:horizontal {
     -fx-pref-height: 16;
     -fx-padding: 2;

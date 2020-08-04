@@ -1,7 +1,6 @@
 package com.halfegg.jtext;
 
 import com.halfegg.jtext.io.Config;
-import com.halfegg.jtext.io.ExceptionLogger;
 import com.halfegg.jtext.io.FileIO;
 import com.halfegg.jtext.util.FontInit;
 import com.halfegg.jtext.util.Shortcut;
@@ -21,7 +20,6 @@ import java.time.format.DateTimeFormatter;
 /**
  * Author: halfegg
  */
-
 public class MainAppController {
 
     @FXML
@@ -35,7 +33,6 @@ public class MainAppController {
     @FXML
     public CheckBox showFileOnStartCheckBox;
 
-    private static ExceptionLogger logger = new ExceptionLogger();
     private final CurrentFile currentFile = new CurrentFile();
     private final WindowLayer windowLayer = new WindowLayer();
     private final Config config = new Config();

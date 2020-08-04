@@ -1,11 +1,15 @@
 package com.halfegg.jtext;
 
 import com.halfegg.jtext.io.Config;
+import com.halfegg.jtext.io.IconsLoader;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class JText extends Application {
+/**
+ * Author: halfegg
+ */
+public class JText extends Application { // SOLVE ICONSLOADER!!!
 
     private Stage stage;
     private final Config config = new Config();
@@ -17,6 +21,7 @@ public class JText extends Application {
         var scene = new Scene(windowLayer.getRoot());
         stage.setScene(scene);
         stage.setTitle("jtext");
+        IconsLoader.load(stage);
         stage.show();
 
         var configs = config.getPositionSizeConfig();

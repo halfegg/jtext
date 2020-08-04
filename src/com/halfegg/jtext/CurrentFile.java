@@ -2,6 +2,9 @@ package com.halfegg.jtext;
 
 import java.io.File;
 
+/**
+ * Author: halfegg
+ */
 public class CurrentFile {
 
     private File file;

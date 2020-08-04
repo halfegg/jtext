@@ -8,8 +8,6 @@ import java.util.Properties;
 
 public class Config {
 
-    private final ExceptionLogger logger = new ExceptionLogger();
-
     private final Path CONFIG_DIRECTORY_PATH = Paths.get("config");
     private final Path PROPERTIES_DIRECTORY_PATH = Paths.get("config", "properties");
     private final Path FONT_CONFIG_PATH = Paths.get("config", "properties", "font.properties");
@@ -44,7 +42,8 @@ public class Config {
                 setShowFileOnStartConfig(false, "");
             }
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "createFiles()", ex);
+            ExceptionLogger.log(Config.class.getName(), "createFiles()", ex);
+            ex.printStackTrace();
         }
     }
 
@@ -56,7 +55,8 @@ public class Config {
         try {
             properties.store(Files.newOutputStream(FONT_CONFIG_PATH), CONFIG_MESSAGE);
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "setFontConfig(String, String, String)", ex);
+            ExceptionLogger.log(Config.class.getName(), "setFontConfig(String, String, String)", ex);
+            ex.printStackTrace();
         }
     }
 
@@ -66,7 +66,8 @@ public class Config {
         try {
             properties.load(Files.newInputStream(FONT_CONFIG_PATH));
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "getFontConfig()", ex);
+            ExceptionLogger.log(Config.class.getName(), "getFontConfig()", ex);
+            ex.printStackTrace();
         }
         configs[0] = properties.getProperty("fontFamily");
         configs[1] = properties.getProperty("fontStyle");
@@ -83,7 +84,8 @@ public class Config {
         try {
             properties.store(Files.newOutputStream(POSITION_CONFIG_PATH), CONFIG_MESSAGE);
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "setPositionSizeConfig(double, double, double, double)", ex);
+            ExceptionLogger.log(Config.class.getName(), "setPositionSizeConfig(double, double, double, double)", ex);
+            ex.printStackTrace();
         }
     }
 
@@ -93,7 +95,8 @@ public class Config {
         try {
             properties.load(Files.newInputStream(POSITION_CONFIG_PATH));
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "getPositionSizeConfig()", ex);
+            ExceptionLogger.log(Config.class.getName(), "getPositionSizeConfig()", ex);
+            ex.printStackTrace();
         }
         configs[0] = Double.parseDouble(properties.getProperty("x"));
         configs[1] = Double.parseDouble(properties.getProperty("y"));
@@ -108,7 +111,8 @@ public class Config {
         try {
             properties.store(Files.newOutputStream(WRAP_TEXT_CONFIG_PATH), CONFIG_MESSAGE);
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "setWrapTextConfig(boolean)", ex);
+            ExceptionLogger.log(Config.class.getName(), "setWrapTextConfig(boolean)", ex);
+            ex.printStackTrace();
         }
     }
 
@@ -117,7 +121,8 @@ public class Config {
         try {
             properties.load(Files.newInputStream(WRAP_TEXT_CONFIG_PATH));
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "getWrapTextConfig()", ex);
+            ExceptionLogger.log(Config.class.getName(), "getWrapTextConfig()", ex);
+            ex.printStackTrace();
         }
         return properties.getProperty("isWrapText");
     }
@@ -129,7 +134,8 @@ public class Config {
         try {
             properties.store(Files.newOutputStream(SHOW_FILE_CONFIG_PATH), CONFIG_MESSAGE);
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "setShowFileOnStartConfig(boolean, String)", ex);
+            ExceptionLogger.log(Config.class.getName(), "setShowFileOnStartConfig(boolean, String)", ex);
+            ex.printStackTrace();
         }
     }
 
@@ -139,7 +145,8 @@ public class Config {
         try {
             properties.load(Files.newInputStream(SHOW_FILE_CONFIG_PATH));
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(), "getShowFileOnStartConfig()", ex);
+            ExceptionLogger.log(Config.class.getName(), "getShowFileOnStartConfig()", ex);
+            ex.printStackTrace();
         }
         configs[0] = properties.getProperty("showFileOnStart");
         configs[1] = properties.getProperty("file");

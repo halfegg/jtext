@@ -11,6 +11,9 @@ import javafx.scene.text.Text;
 
 import java.util.Arrays;
 
+/**
+ * Author: halfegg
+ */
 public class FontInit {
 
     public void familyList(ListView<String> familyListView) {

@@ -10,6 +10,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * Author: halfegg
+ */
 public class FontSettingController {
 
     @FXML
@@ -79,16 +82,25 @@ public class FontSettingController {
         fontInit.sizeList(fontSizeListView);
     }
 
+    /**
+     *
+     * @return TextArea from the main window.
+     * embedding objects with castings.
+     * better than four lines of code when separated.
+     * better still than lookup() method.
+     * delete comment and change block when come up with solution
+     */
     private TextArea getTextArea() {
-        var stage = (Stage) root.getScene().getWindow();
-        var owner = (Stage) stage.getOwner();
-        var parent = (VBox) owner.getScene().getRoot();
-        var anchorPane = (AnchorPane) parent.getChildren().get(1);
-        return (TextArea) anchorPane.getChildren().get(0);
+        return (TextArea) ((AnchorPane) ((VBox) ((Stage) root.getScene().getWindow())
+                .getOwner().getScene().getRoot()).getChildren().get(1)).getChildren().get(0);
+
+//        var stage = (Stage) root.getScene().getWindow();
+//        var vBox = (VBox) stage.getOwner().getScene().getRoot();
+//        var anchorPane = (AnchorPane) vBox.getChildren().get(1);
+//        return (TextArea) anchorPane.getChildren().get(0);
     }
 
     private Stage getOwner() {
-        var stage = (Stage) root.getScene().getWindow();
-        return (Stage) stage.getOwner();
+        return (Stage) ((Stage) root.getScene().getWindow()).getOwner();
     }
 }

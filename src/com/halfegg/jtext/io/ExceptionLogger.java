@@ -4,64 +4,47 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class ExceptionLogger {
+public final class ExceptionLogger {
 
-    private final Path LOG_DIRECTORY_PATH = Paths.get("log");
-    private final Path DBG_DIRECTORY_PATH = Paths.get("log", "dbg");
-    private final Path DBG_LOG_PATH = Paths.get("log", "dbg", "dev-dbg.log");
+    private static final Path LOG_DIRECTORY_PATH = Paths.get("log");
+    private static final Path DBG_DIRECTORY_PATH = Paths.get("log", "dbg");
+    private static final Path DBG_LOG_PATH = Paths.get("log", "dbg", "dev-dbg.log");
 
-    private Logger logger;
-    private FileHandler fileHandler;
+    private ExceptionLogger() {}
 
-    public ExceptionLogger() {
-        createFiles();
-        initFileHandler();
-        initLogger();
-    }
-
-    private void createFiles() {
+    public static void createFiles() {
         try {
             if (Files.notExists(LOG_DIRECTORY_PATH)) Files.createDirectory(LOG_DIRECTORY_PATH);
             if (Files.notExists(DBG_DIRECTORY_PATH)) Files.createDirectory(DBG_DIRECTORY_PATH);
             if (Files.notExists(DBG_LOG_PATH)) Files.createFile(DBG_LOG_PATH);
-            else checkFileLength();
         } catch (IOException ex) {
-            this.log(this.getClass().getName(), "createFiles()", ex);
+            ExceptionLogger.log(ExceptionLogger.class.getName(), "createFiles()", ex);
+            ex.printStackTrace();
         }
     }
 
-    private void initFileHandler() {
-        try {
-            fileHandler = new FileHandler(DBG_LOG_PATH.toFile().getAbsolutePath(), true);
-            fileHandler.setFormatter(new SimpleFormatter());
-        } catch (IOException ex) {
-            this.log(this.getClass().getName(), "initFileHandler()", ex);
-        }
+    public static void log(String className, String methodName, Exception exception) {
+        checkFiles();
+        var content = "\n\n\n#jtext Exception Log\n#" +
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")) +
+                "\nSEVERE: " + className + " " + methodName + "\n";
+        FileIO.write(DBG_LOG_PATH.toFile(), content, true);
+        FileIO.write(DBG_LOG_PATH.toFile(), exception);
     }
 
-    private void initLogger() {
-        logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        logger.setLevel(Level.SEVERE);
-        logger.addHandler(fileHandler);
-    }
-
-    private void checkFileLength() {
-        try {
-            if (DBG_LOG_PATH.toFile().length() > 150_000) {
+    private static void checkFiles() {
+        if (Files.notExists(DBG_LOG_PATH)) createFiles();
+        if (DBG_LOG_PATH.toFile().length() > 150_000L) {
+            try {
                 Files.delete(DBG_LOG_PATH);
                 Files.createFile(DBG_LOG_PATH);
+            } catch (IOException ex) {
+                ExceptionLogger.log(ExceptionLogger.class.getName(), "checkFiles()", ex);
+                ex.printStackTrace();
             }
-        } catch (IOException ex) {
-            this.log(this.getClass().getName(), "checkFileLength()", ex);
         }
-    }
-
-    public void log(String className, String methodName, Throwable ex) {
-        logger.log(Level.SEVERE, className + " " + methodName, ex);
     }
 }

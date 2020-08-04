@@ -4,8 +4,6 @@ import java.io.*;
 
 public class FileIO {
 
-    private static final com.halfegg.jtext.io.ExceptionLogger logger = new com.halfegg.jtext.io.ExceptionLogger();
-
     private FileIO() {}
 
     public static String read(File file) {
@@ -17,7 +15,8 @@ public class FileIO {
             }
             return stringBuilder.toString();
         } catch (NullPointerException | IOException ex) {
-            logger.log(FileIO.class.getName(), "read(File)", ex);
+            ExceptionLogger.log(FileIO.class.getName(), "read(File)", ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -26,7 +25,26 @@ public class FileIO {
         try (var writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)))) {
             writer.write(content);
         } catch (NullPointerException | IOException ex) {
-            logger.log(FileIO.class.getName(), "write(File, String)", ex);
+            ExceptionLogger.log(FileIO.class.getName(), "write(File, String)", ex);
+            ex.printStackTrace();
+        }
+    }
+
+    public static void write(File file, String content, boolean append) {
+        try (var writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, append)))) {
+            writer.write(content);
+        } catch (NullPointerException | IOException ex) {
+            ExceptionLogger.log(FileIO.class.getName(), "write(File, String, boolean)", ex);
+            ex.printStackTrace();
+        }
+    }
+
+    public static void write(File file, Throwable throwable) {
+        try {
+            throwable.printStackTrace(new PrintStream(new FileOutputStream(file, true)));
+        } catch (FileNotFoundException ex) {
+            ExceptionLogger.log(FileIO.class.getName(), "write(File, Throwable)", ex);
+            ex.printStackTrace();
         }
     }
 }

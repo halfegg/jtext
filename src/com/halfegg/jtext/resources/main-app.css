@@ -1,8 +1,11 @@
+/*
+ *  Author: halfegg
+ */
 .root {
 
 }
 
-//MENU
+/* MENU */
 .menu-bar > .container > .menu-button > .label {
     -fx-font-size: 13;
 }
@@ -19,7 +22,7 @@
     -fx-font-size: 13;
 }
 
-//MAIN_BODY
+/* MAIN_BODY */
 .main-body-container > .text-area {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;

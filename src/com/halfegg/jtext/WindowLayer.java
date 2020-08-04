@@ -12,17 +12,21 @@ import javafx.stage.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Author: halfegg
+ */
 public class WindowLayer {
 
-    private final ExceptionLogger logger = new ExceptionLogger();
     private final Config config = new Config();
 
     public Parent getRoot() {
         try {
             config.createFiles();
+            ExceptionLogger.createFiles();
             return FXMLLoader.load(getClass().getResource("resources/main-app.fxml"));
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(),"getRoot()", ex);
+            ExceptionLogger.log(WindowLayer.class.getName(), "getRoot()", ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -74,7 +78,8 @@ public class WindowLayer {
             stage.setX(sceneWindow.getX() + sceneWindow.getWidth() / 2 - stage.getWidth() / 2);
             stage.setY(sceneWindow.getY() + sceneWindow.getHeight() / 2 - stage.getHeight() / 2);
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(),"getFindReplaceWindow(Window)", ex);
+            ExceptionLogger.log(WindowLayer.class.getName(), "getFindReplaceWindow(Window)", ex);
+            ex.printStackTrace();
         }
     }
 
@@ -93,7 +98,8 @@ public class WindowLayer {
             stage.setX(sceneWindow.getX() + sceneWindow.getWidth() / 2 - stage.getWidth() / 2);
             stage.setY(sceneWindow.getY() + sceneWindow.getHeight() / 2 - stage.getHeight() / 2);
         } catch (IOException ex) {
-            logger.log(this.getClass().getName(),"getFontSettingWindow(Window)", ex);
+            ExceptionLogger.log(WindowLayer.class.getName(), "getFontSettingWindow(Window)", ex);
+            ex.printStackTrace();
         }
     }
 
