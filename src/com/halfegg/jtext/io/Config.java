@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-public class Config {
+public class Config { // CREATE FILES SETREADONLY() AFTER CREATING AND WRITING, SETWRITABLE() BEFORE WRITING
 
     private final Path CONFIG_DIRECTORY_PATH = Paths.get("config");
     private final Path PROPERTIES_DIRECTORY_PATH = Paths.get("config", "properties");
