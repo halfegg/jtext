@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <VBox fx:id="root" alignment="CENTER" onKeyPressed="#keyCombinations" prefHeight="520.0" prefWidth="680.0"
-      stylesheets="@main-app.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      styleClass="main-app" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.halfegg.jtext.MainAppController">
     <MenuBar>
         <Menu text="_File">

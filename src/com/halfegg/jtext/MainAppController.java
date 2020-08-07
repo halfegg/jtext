@@ -161,6 +161,7 @@ public class MainAppController {
 
     @FXML
     private void about() {
+        windowLayer.getAboutWindow(root.getScene().getWindow());
     }
 
     @FXML

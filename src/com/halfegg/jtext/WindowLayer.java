@@ -103,4 +103,23 @@ public class WindowLayer {
         }
     }
 
+    public void getAboutWindow(Window sceneWindow) {
+        try {
+            var stage = new Stage();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("resources/about-window.fxml"))));
+            stage.initOwner(sceneWindow);
+            stage.initModality(Modality.NONE);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setResizable(false);
+            stage.setTitle("About");
+            stage.show();
+            stage.requestFocus();
+            stage.setX(sceneWindow.getX() + sceneWindow.getWidth() / 2 - stage.getWidth() / 2);
+            stage.setY(sceneWindow.getY() + sceneWindow.getHeight() / 2 - stage.getHeight() / 2);
+        } catch (IOException ex) {
+            ExceptionLogger.log(WindowLayer.class.getName(), "getAboutWindow()", ex);
+            ex.printStackTrace();
+        }
+    }
+
 }
